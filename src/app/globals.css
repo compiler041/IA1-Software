@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Segoe UI Mono", Menlo, monospace;
+}
+
+@theme {
+  --color-brand-50: #fbf4f5;
+  --color-brand-100: #f6e6e9;
+  --color-brand-200: #edccd3;
+  --color-brand-300: #dfa4b0;
+  --color-brand-400: #cb7183;
+  --color-brand-500: #b44a60;
+  --color-brand-600: #9b3249;
+  --color-brand-700: #82263b;
+  --color-brand-800: #6c2133;
+  --color-brand-900: #5a1e2e;
+  --color-brand-950: #330d17;
+
+  --color-gold-50: #fbf8ef;
+  --color-gold-100: #f5edd6;
+  --color-gold-200: #ebd9a9;
+  --color-gold-300: #dfc178;
+  --color-gold-400: #d3a94f;
+  --color-gold-500: #c49234;
+  --color-gold-600: #a9752a;
+  --color-gold-700: #875824;
+  --color-gold-800: #704823;
+  --color-gold-900: #5e3d21;
+
+  --color-ink-950: #0f0b11;
+  --color-ink-900: #17121a;
+  --color-ink-800: #221b26;
+  --color-ink-700: #2f2735;
+  --color-ink-600: #453b4d;
+
+  --color-canvas: #f6f4f1;
+
+  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04), 0 1px 1px rgb(28 25 23 / 0.02), 0 14px 36px -18px rgb(28 25 23 / 0.14);
+  --shadow-float: 0 2px 6px rgb(28 25 23 / 0.05), 0 28px 56px -16px rgb(28 25 23 / 0.28);
+  --shadow-brand: 0 1px 0 rgb(255 255 255 / 0.14) inset, 0 10px 24px -10px rgb(130 38 59 / 0.7);
+
+  --animate-fade-in: fade-in 0.3s ease-out both;
+  --animate-fade-up: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-scale-in: scale-in 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-in-right: slide-in-right 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-in-left: slide-in-left 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-up: slide-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-shake: shake 0.42s ease-in-out;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97) translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 24px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20%,
+    60% {
+      transform: translateX(-6px);
+    }
+    40%,
+    80% {
+      transform: translateX(6px);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-stone-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--color-brand-200);
+    color: var(--color-brand-950);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility skeleton {
+  background: linear-gradient(90deg, var(--color-stone-200) 0%, var(--color-stone-100) 50%, var(--color-stone-200) 100%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 0.75rem;
+}
+
+/* Fine dotted grid used on the dark hero and the admin sidebar. */
+@utility bg-grid {
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-stone-300) transparent;
+}
+
+/* react-day-picker theme (scoped so it outranks the library stylesheet regardless of load order) */
+.sa-calendar .rdp-root {
+  --rdp-accent-color: var(--color-brand-700);
+  --rdp-accent-background-color: var(--color-brand-50);
+  --rdp-day-height: 38px;
+  --rdp-day-width: 38px;
+  --rdp-day_button-height: 34px;
+  --rdp-day_button-width: 34px;
+  --rdp-day_button-border-radius: 10px;
+  --rdp-selected-border: 2px solid var(--color-brand-700);
+  --rdp-today-color: var(--color-brand-700);
+  --rdp-nav-height: 2.5rem;
+  --rdp-nav_button-height: 2rem;
+  --rdp-nav_button-width: 2rem;
+  font-size: 0.875rem;
+}
+.sa-calendar .rdp-selected .rdp-day_button {
+  background: var(--color-brand-700);
+  color: white;
+  font-weight: 600;
+}
+.sa-calendar .rdp-day_button:hover:not([disabled]) {
+  background: var(--color-brand-50);
+}
+.sa-calendar .rdp-selected .rdp-day_button:hover {
+  background: var(--color-brand-800);
+}
+.sa-calendar .rdp-caption_label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.sa-calendar .rdp-weekday {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-stone-500);
+  font-weight: 600;
+}
+.sa-calendar .rdp-chevron {
+  fill: var(--color-stone-600);
+}
+.sa-calendar .rdp-dropdown_root {
+  border-radius: 8px;
+}
